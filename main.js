@@ -76,28 +76,7 @@ const tlNav = gsap.timeline({
   opacity:1,
 },0);
 
-
-gsap.utils
-	.toArray(
-		"h2, h3, p, .w-richtext, .w-richtext > *, .w-richtext > * > p, [data-bottom], .w-richtext:not([data-no-animation])"
-	)
-	.forEach((el, i) => {
-		let projectList = gsap.timeline({
-			scrollTrigger: {
-				trigger: el
-				// start: "top, bottom"
-				// markers: true
-			}
-		});
-		projectList.from(el, {
-			y: 50,
-			opacity: 0,
-			duration: 0.5,
-			ease: Power1.easeOut
-		});
-	});
-
-
+//Cursor
   const cursor = document.querySelector('.cursor');
   const cursorStroke = document.querySelector('.cursor_stroke');
   const linksAndButtons = document.querySelectorAll('a, button');
@@ -289,5 +268,43 @@ document.addEventListener('mouseup', function(event) {
     xPercent: -20
   });
 
+  // Reveal
+gsap.utils
+.toArray(
+  "h2, h3, p, .w-richtext, .w-richtext > *, .w-richtext > * > p, [data-bottom], .w-richtext:not([data-no-animation])"
+)
+.forEach((el, i) => {
+  let projectList = gsap.timeline({
+    scrollTrigger: {
+      trigger: el
+      // start: "top, bottom"
+      // markers: true
+    }
+  });
+  projectList.from(el, {
+    y: 50,
+    opacity: 0,
+    duration: 0.5,
+    ease: Power1.easeOut
+  });
+});
+// Stagger component
+gsap.set("[data-stagger]", {
+y: 50,
+opacity: 0
+});
+ScrollTrigger.batch("[data-stagger]", {
+start: "center bottom",
+onEnter: (batch) =>
+  gsap.to(batch, {
+    y: 0,
+    opacity: 1,
+    duration: 0.6,
+    stagger: 0.2,
+    ease: Power1.easeInOut
+  })
+});
   // gsap code here!
 });
+
+
