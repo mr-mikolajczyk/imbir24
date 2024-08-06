@@ -73,6 +73,26 @@ const tlNav = gsap.timeline({
 },0);
 
 
+gsap.utils
+	.toArray(
+		"h2, h3, p, .w-richtext, .w-richtext > *, .w-richtext > * > p, [data-bottom], .w-richtext:not([data-no-animation])"
+	)
+	.forEach((el, i) => {
+		let projectList = gsap.timeline({
+			scrollTrigger: {
+				trigger: el
+				// start: "top, bottom"
+				// markers: true
+			}
+		});
+		projectList.from(el, {
+			y: 50,
+			opacity: 0,
+			duration: 0.5,
+			ease: Power1.easeOut
+		});
+	});
+
 //cursor
   const cursor = document.querySelector('.cursor');
   const cursorStroke = document.querySelector('.cursor_stroke');
