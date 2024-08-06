@@ -120,6 +120,27 @@ document.addEventListener('mouseup', function(event) {
     ease: "power2.out"
   });
 });
+const splitAbout = new SplitType('#mission', {
+  types: 'words, chars'
+})
+
+const tlInfo = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".section_layout140",
+      start: "top 80%",
+      end: "bottom 80%",
+      // end: "+=150%",
+      // pin: true,
+      scrub: 0.5,
+    }
+  })
+  .from(splitAbout.chars, {
+    opacity: .1,
+    scale: 0.95,
+      stagger: 0.01,
+      yPercent:10,
+      duration: 0.1,
+  });
 
 //CTA
 const splitCTA = new SplitType('.heading_cta', {
