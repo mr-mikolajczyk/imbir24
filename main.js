@@ -284,8 +284,8 @@ gsap.utils
   projectList.from(el, {
     y: 50,
     opacity: 0,
-    duration: 0.5,
-    ease: Power1.easeOut
+    duration: 0.6,
+    ease: Power1.easeInOut
   });
 });
 // Stagger component
