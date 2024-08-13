@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     stagger: 0.05,
     ease: "circ.out",
   });
-  gsap.from(".nav_item", {
+  gsap.from(".nav_container *", {
     yPercent: 100,
     opacity: 0,
     duration: 0.6,
