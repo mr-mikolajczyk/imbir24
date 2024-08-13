@@ -189,32 +189,39 @@ document.addEventListener('mouseup', function(event) {
   let moveDistance = card.offsetWidth;
   let move = moveDistance * (offerCards);
 
-  let scrollTween = gsap.to(".home_portfolio_component", {
-    x: -move,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".section_home_portfolio",
-      start: "center center",
-      end: () => "+=" + window.innerHeight,
-      pin: true,
-      scrub: 1.5
+
+  ScrollTrigger.matchMedia({
+    // desktop
+    "(min-width: 800px)": function () {
+      let scrollTween = gsap.to(".home_portfolio_component", {
+        x: -move,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".section_home_portfolio",
+          start: "center center",
+          end: () => "+=" + window.innerHeight,
+          pin: true,
+          scrub: 1.5
+        }
+      });
+    
+      scrollItems.forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0,
+          yPercent:15,
+          scale:0.9,
+          scrollTrigger: {
+            containerAnimation: scrollTween,
+            trigger: card,
+            start: "left 70%",
+            ease: "power3.inOut",
+            toggleActions: "play none none reverse"
+          }
+        });
+      });
     }
   });
 
-  scrollItems.forEach((card, i) => {
-    gsap.from(card, {
-      opacity: 0,
-      yPercent:15,
-      scale:0.9,
-      scrollTrigger: {
-        containerAnimation: scrollTween,
-        trigger: card,
-        start: "left 70%",
-        ease: "power3.inOut",
-        toggleActions: "play none none reverse"
-      }
-    });
-  });
 
   const splitAbout = new SplitType('#imbir-info', {
     types: 'words, chars'

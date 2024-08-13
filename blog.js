@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     element.addEventListener("mouseout", () => {
       cursor.style.opacity = 1;
       cursorStroke.style.opacity = 1;
-      gsap.to(cursorStroke, { scale: 1, duration: 1, eease: "circ.inOut" });
+      gsap.to(cursorStroke, { scale: 1, duration: 1, ease: "circ.inOut" });
     });
   };
 
@@ -196,4 +196,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
 
   // gsap code here!
+  const menuFilters = document.querySelectorAll('.blog17_menu-link');
+  const targetElement = document.querySelector('.blog17_component');
+  menuFilters.forEach(filter => {
+    filter.addEventListener('click', () => {
+      setTimeout(() => {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        console.log('Kliknięto element z klasą blog17_menu-link');
+        ScrollTrigger.refresh();
+      }, 200);
+    });
+  });
+  
 });
+
