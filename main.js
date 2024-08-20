@@ -221,10 +221,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
           trigger: ".section_home_portfolio",
           start: "center center",
           end: () => "+=" + window.innerHeight,
+          invalidateOnRefresh: true,
           pin: true,
           scrub: 1.5,
         },
-        invalidateOnRefresh: true,
       });
 
       scrollItems.forEach((card, i) => {
