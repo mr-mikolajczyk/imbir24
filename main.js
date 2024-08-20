@@ -26,6 +26,15 @@ setTheme(preferredTheme);
 // use a script tag or an external JS file
 document.addEventListener("DOMContentLoaded", (event) => {
   gsap.registerPlugin(Flip, ScrollTrigger);
+  let resizeTimeout;
+
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        ScrollTrigger.refresh();
+        console.log('Zmieniono szerokość okna na:', window.innerWidth);
+    }, 200);
+});
   //theme
 
   //navbar
