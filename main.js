@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       let move = moveDistance * offerCards;
 
       let scrollTween = gsap.to(".home_portfolio_component", {
-        x: -(card.offsetWidth * offerCards),
+        x: () => -(card.offsetWidth * offerCards),
         ease: "none",
         scrollTrigger: {
           trigger: ".section_home_portfolio",
